@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class OpenclassdutController extends AbstractController
 {
     /**
-     * @Route("/openclassdut", name="openclassdut")
+     * @Route("/", name="openclassdut_accueil")
      */
     public function index()
     {
