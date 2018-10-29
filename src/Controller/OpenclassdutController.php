@@ -20,6 +20,7 @@ class OpenclassdutController extends AbstractController
      */
     public function afficherRessourcePeda()
     {
-        return $this->render('openclassdut/affichageRessource.html.twig');
+        return $this->render('openclassdut/affichageRessource.html.twig',
+      ['idRessource' => 500]);
     }
 }
