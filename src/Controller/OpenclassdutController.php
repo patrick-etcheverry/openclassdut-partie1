@@ -16,11 +16,11 @@ class OpenclassdutController extends AbstractController
     }
 
     /**
-     * @Route("/ressources/345", name="openclassdut_ressource345")
+     * @Route("/ressources/{id}", name="openclassdut_ressource")
      */
-    public function afficherRessourcePeda()
+    public function afficherRessourcePeda($id)
     {
         return $this->render('openclassdut/affichageRessource.html.twig',
-      ['idRessource' => 500]);
+      ['idRessource' => $id]);
     }
 }
