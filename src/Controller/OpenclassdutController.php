@@ -12,8 +12,6 @@ class OpenclassdutController extends AbstractController
      */
     public function index()
     {
-        return $this->render('openclassdut/index.html.twig', [
-            'controller_name' => 'OpenclassdutController',
-        ]);
+        return $this->render('openclassdut/index.html.twig');
     }
 }
