@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block contenu %}
-<h1> Ressource {{idRessource}}</h1>
+{% block titrePage %}
+<h1> Nom de la ressource {{idRessource}}</h1>
+{% endblock %}
 
+{% block contenuPage %}
 <p>
   Cette page affichera le descriptif de la ressource pédagogique numéro {{idRessource}}.
 </p>
