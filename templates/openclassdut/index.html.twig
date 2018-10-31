@@ -1,22 +1,46 @@
 {% extends 'base.html.twig' %}
 
 {% block titrePage %}
-<h1>Dernières ressources ajoutées</h1>
+  Dernières ressources ajoutées
 {% endblock %}
 
 {% block contenuPage %}
-<p>
-Vous trouverez ci-dessous les dernières ressources pédagogiques ajoutées sur OpneclassDut.
-</p>
-<ul>
-  <li>
-    <a href="{{path('openclassdut_ressource',{id:5})}}">Exo1 - Tp3 - M1102</a>
-  </li>
-  <li>
-    <a href="{{path('openclassdut_ressource',{id:152})}}">Tuto sur les fonctions</a>
-  </li>
-  <li>
-    <a href="{{path('openclassdut_ressource',{id:726})}}">Tabula rasa</a>
-  </li>
-</ul>
+  <div class="card-deck">
+    <div class="card">
+      <a href="{{path('openclassdut_ressource',{id:5})}}">
+        <img class="card-img-top" src="{{asset('/img/slider1.jpg')}}">
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">Exo1 - Tp3 - M1102</h5>
+        <p class="card-text">Description de la ressource...</p>
+        <p class="card-text">
+          <small class="text-muted">Date d'ajout : 11/10/2018</small>
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <a href="{{path('openclassdut_ressource',{id:5})}}">
+        <img class="card-img-top" src="{{asset('/img/slider2.jpg')}}">
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">Tuto sur les fonctions</h5>
+        <p class="card-text">Description de la ressource...</p>
+        <p class="card-text">
+          <small class="text-muted">Date d'ajout : 03/10/2018</small>
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <a href="{{path('openclassdut_ressource',{id:5})}}">
+        <img class="card-img-top" src="{{asset('/img/slider3.jpg')}}">
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">Tabula rasa</h5>
+        <p class="card-text">Description de la ressource...</p>
+        <p class="card-text">
+          <small class="text-muted">Date d'ajout : 18/09/2018</small>
+        </p>
+      </div>
+    </div>
+  </div>
 {% endblock %}

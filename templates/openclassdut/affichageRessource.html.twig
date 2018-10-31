@@ -1,11 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block titrePage %}
-<h1> Nom de la ressource {{idRessource}}</h1>
+Nom de la ressource {{idRessource}}
 {% endblock %}
 
 {% block contenuPage %}
-<p>
-  Cette page affichera le descriptif de la ressource pédagogique numéro {{idRessource}}.
-</p>
+<ul class="list-group">
+  <li class="list-group-item center">
+    <img class="rounded mx-auto d-block" src="{{asset('/img/slider1.jpg')}}" width="400px">
+  </li>
+  <li class="list-group-item"><strong>Descriptif :</strong> Descriptif de la ressource...</li>
+  <li class="list-group-item"><strong>Date d'ajout :</strong> 03/10/2018</li>
+  <li class="list-group-item"><strong>Type de ressource :</strong> Application</li>
+  <li class="list-group-item"><strong>Modules concernés :</strong> M1102, M1103 </li>
+  <li class="list-group-item"><a href="">Télecharger cette ressource</a></li>
+</ul>
 {% endblock %}
