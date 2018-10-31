@@ -9,6 +9,7 @@
 
     <!-- BLOC DES FEUILLES DE STYLE  -->
     {% block stylesheets %}
+      <link rel="stylesheet" href="{{asset('/css/fontello.css')}}">
       <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
     {% endblock %}
 
@@ -22,7 +23,7 @@
 
     <!-- BLOC DU MENU -->
     {% block menu %}
-      <h1>----------- MENU ----------</h1>
+      <h1>----------- MENU ---------- <i class="icon-user"></i> </h1>
     {% endblock %}
 
     <!-- BLOC CONTENU DE LA PAGE -->
