@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,6 +32,16 @@ class Module
      * @ORM\Column(type="smallint")
      */
     private $semestre;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Ressource", mappedBy="modules")
+     */
+    private $ressources;
+
+    public function __construct()
+    {
+        $this->ressources = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -68,6 +80,34 @@ class Module
     public function setSemestre(int $semestre): self
     {
         $this->semestre = $semestre;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Ressource[]
+     */
+    public function getRessources(): Collection
+    {
+        return $this->ressources;
+    }
+
+    public function addRessource(Ressource $ressource): self
+    {
+        if (!$this->ressources->contains($ressource)) {
+            $this->ressources[] = $ressource;
+            $ressource->addModule($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRessource(Ressource $ressource): self
+    {
+        if ($this->ressources->contains($ressource)) {
+            $this->ressources->removeElement($ressource);
+            $ressource->removeModule($this);
+        }
 
         return $this;
     }
