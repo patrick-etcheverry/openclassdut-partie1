@@ -10,12 +10,24 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $moduleM1102 = new Module();
-        $moduleM1102->setCode("M1102");
-        $moduleM1102->setTitre("Initiation à l'algorithmique");
-        $moduleM1102->setSemestre(1);
-        $manager->persist($moduleM1102);
-
+        // Création d'un générateur de données avec la librairie Faker
+        $faker = \Faker\Factory::create('fr_FR');
+        $nbModules = 15;
+        for ($i=1; $i <= $nbModules; $i++) {
+            // Création d'un nouveau module
+            $module = new Module();
+            // Génération d'un numéro de semestre compris entre 1 et 4
+            $numSemestre = $faker->numberBetween($min = 1, $max = 4);
+            // Définition du code du semestre
+            $module->setCode($faker->regexify('M'.$numSemestre.'[1-2]0[1-6]'));
+            // Définition du titre du semestre
+            $module->setTitre($faker->sentence($nbWords = 6, $variableNbWords = true));
+            // Définition du numéro du semestre
+            $module->setSemestre($numSemestre);
+            // Enregistrement du module créé
+            $manager->persist($module);
+        }
+        // Envoyer en BD tous les objets persistés
         $manager->flush();
     }
 }
