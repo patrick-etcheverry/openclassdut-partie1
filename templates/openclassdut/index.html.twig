@@ -5,42 +5,40 @@
 {% endblock %}
 
 {% block contenuPage %}
-  <div class="card-deck">
+
+{% set debutNouvelleLigne = true %}
+
+    {% for ressourceCourante in ressources %}
+
+    {# Si  on est en début de ligne, on crée un nouveau composant card-deck#}
+    {% if debutNouvelleLigne == true %}
+      <div class="card-deck">
+      {% set debutNouvelleLigne = false %}
+    {% endif %}
+
+    {#Afficher une carte pour la ressource courante #}
     <div class="card">
       <a href="{{path('openclassdut_ressource',{id:5})}}">
-        <img class="card-img-top" src="{{asset('/img/slider1.jpg')}}">
+        <img class="card-img-top" src="{{ressourceCourante.urlVignette}}">
       </a>
       <div class="card-body">
-        <h5 class="card-title">Exo1 - Tp3 - M1102</h5>
-        <p class="card-text">Description de la ressource...</p>
+        <h5 class="card-title"><i class="{{ressourceCourante.typeRessource.icone}}"></i>{{ressourceCourante.titre}}</h5>
+        <p class="card-text">{{ressourceCourante.descriptif}}</p>
         <p class="card-text">
-          <small class="text-muted">Date d'ajout : 11/10/2018</small>
+          <small class="text-muted">Date d'ajout : {{ressourceCourante.dateAjout | date("d/m/Y")}}</small>
         </p>
       </div>
     </div>
-    <div class="card">
-      <a href="{{path('openclassdut_ressource',{id:5})}}">
-        <img class="card-img-top" src="{{asset('/img/slider2.jpg')}}">
-      </a>
-      <div class="card-body">
-        <h5 class="card-title">Tuto sur les fonctions</h5>
-        <p class="card-text">Description de la ressource...</p>
-        <p class="card-text">
-          <small class="text-muted">Date d'ajout : 03/10/2018</small>
-        </p>
+
+    {# Vérifier s'il faut passer à la ligne suivante (toutes les 3 ressources affihées) #}
+    {% if loop.index % 3 == 0 %}
       </div>
-    </div>
-    <div class="card">
-      <a href="{{path('openclassdut_ressource',{id:5})}}">
-        <img class="card-img-top" src="{{asset('/img/slider3.jpg')}}">
-      </a>
-      <div class="card-body">
-        <h5 class="card-title">Tabula rasa</h5>
-        <p class="card-text">Description de la ressource...</p>
-        <p class="card-text">
-          <small class="text-muted">Date d'ajout : 18/09/2018</small>
-        </p>
-      </div>
-    </div>
-  </div>
+      <br />
+      {% set debutNouvelleLigne = true %}
+    {% endif %}
+
+    {% endfor %}
+
+
+
 {% endblock %}
