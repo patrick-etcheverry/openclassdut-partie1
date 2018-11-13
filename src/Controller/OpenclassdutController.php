@@ -13,14 +13,14 @@ class OpenclassdutController extends AbstractController
      */
     public function index()
     {
-       // Récupérer le repository de l'entité Ressource
-       $repositoryRessource = $this->getDoctrine()->getRepository(Ressource::class);
+        // Récupérer le repository de l'entité Ressource
+        $repositoryRessource = $this->getDoctrine()->getRepository(Ressource::class);
 
-       // Récupérer les ressources enregistrées en BD
-       $ressources = $repositoryRessource->findAll();
+        // Récupérer les ressources enregistrées en BD
+        $ressources = $repositoryRessource->findAll();
 
-       // Envoyer les ressources récupérées à la vue chargée de les afficher
-        return $this->render('openclassdut/index.html.twig',['ressources'=>$ressources]);
+        // Envoyer les ressources récupérées à la vue chargée de les afficher
+        return $this->render('openclassdut/index.html.twig', ['ressources'=>$ressources]);
     }
 
     /**
@@ -28,7 +28,13 @@ class OpenclassdutController extends AbstractController
      */
     public function afficherRessourcePeda($id)
     {
-        return $this->render('openclassdut/affichageRessource.html.twig',
-      ['idRessource' => $id]);
+        // Récupérer le repository de l'entité Ressource
+        $repositoryRessource = $this->getDoctrine()->getRepository(Ressource::class);
+
+        // Récupérer les ressources enregistrées en BD
+        $ressource = $repositoryRessource->find($id);
+
+        // Envoyer la ressource récupérée à la vue chargée de l'afficher
+        return $this->render('openclassdut/affichageRessource.html.twig', ['ressource' => $ressource]);
     }
 }
