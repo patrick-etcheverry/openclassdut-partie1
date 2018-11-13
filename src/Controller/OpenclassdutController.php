@@ -5,17 +5,16 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Ressource;
+use App\Repository\RessourceRepository;
+
 
 class OpenclassdutController extends AbstractController
 {
     /**
      * @Route("/", name="openclassdut_accueil")
      */
-    public function index()
+    public function index(RessourceRepository $repositoryRessource)
     {
-        // Récupérer le repository de l'entité Ressource
-        $repositoryRessource = $this->getDoctrine()->getRepository(Ressource::class);
-
         // Récupérer les ressources enregistrées en BD
         $ressources = $repositoryRessource->findAll();
 
@@ -26,14 +25,8 @@ class OpenclassdutController extends AbstractController
     /**
      * @Route("/ressources/{id}", name="openclassdut_ressource")
      */
-    public function afficherRessourcePeda($id)
+    public function afficherRessourcePeda(Ressource $ressource)
     {
-        // Récupérer le repository de l'entité Ressource
-        $repositoryRessource = $this->getDoctrine()->getRepository(Ressource::class);
-
-        // Récupérer les ressources enregistrées en BD
-        $ressource = $repositoryRessource->find($id);
-
         // Envoyer la ressource récupérée à la vue chargée de l'afficher
         return $this->render('openclassdut/affichageRessource.html.twig', ['ressource' => $ressource]);
     }
